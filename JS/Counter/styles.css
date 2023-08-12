@@ -5,19 +5,20 @@
     justify-content: center;
     
 }
-/*.Title{
-    /* position: fixed;
+.Title{
+     /* position: fixed; */
     top:0;
     left: 44vw;
     display: flex;
     justify-content: center;
     font-family: caprasimo;
-    /* height: 3px; */
-   /* align-items: center;
+    height: 2vh; 
+   align-items: center;
     align-content: center;
     align-self: center;
     padding-top: 3px;
-     */
+    font-size: 75px;
+}  
 
 .center{
     display: flex;
@@ -34,6 +35,7 @@ main{
     height: 100%;
     display: flex;
     flex-direction: column;
+    height: 82vh;
 }
 #count{
     display: flex;
