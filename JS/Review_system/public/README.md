@@ -1,0 +1,1 @@
+## Adde images into this folder and then add there path to the array named images in the app.js file
