@@ -1,0 +1,1 @@
+## Add some demo files like music, video, images etc. for testing the static_middleware
