@@ -32,4 +32,3 @@ In modern JavaScript callbacks have largely been replaced by Promises. Promises 
 
  we'll primarily be using `await` to wait on promise completion within an `async` function, because this leads to more readable and understandable asynchronous code.
 
- 
