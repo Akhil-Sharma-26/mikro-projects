@@ -1,10 +1,13 @@
 #include<iostream>
 #include<conio.h> // for _kbhit() and _getch() functions
+#include<windows.h> // for Sleep() function
 using namespace std;
 bool gameover;
-const int width = 20;
+const int width = 50;
 const int height = 20;
-int x, y, fruitX, fruitY, score;
+int x, y, fruitX, fruitY, score; // x and y are coordinates of snake head
+int tailX[100], tailY[100]; // coordinates of snake tail
+int nTail; // length of snake tail
 enum Direction {STOP = 0, LEFT, RIGHT, UP, DOWN}; // what is enum?? and how it works
 // enum is a user defined data type in C/C++.
 // here it is used for direction of snake, by default it is STOP
@@ -36,8 +39,19 @@ void draw(){
                 cout << "F"; // fruit
             }
             else{
+                bool print = false;
+                for(int k = 0; k < nTail; k++){
+                    if(tailX[k] == j && tailY[k] == i){
+                        cout << "o";
+                        print = true;
+                    }
+                }
+                if(print){
+                    cout << " ";
+                }
                 cout << " ";
             }
+            
         }
         cout << endl;
     }
@@ -71,6 +85,19 @@ void input(){
 
 };
 void logic(){
+    int prevX = tailX[0];
+    int prevY = tailY[0];
+    int prev2X, prev2Y;
+    tailX[0] = x;
+    tailY[0] = y;
+    for(int i = 1; i < nTail; i++){
+        prev2X = tailX[i];
+        prev2Y = tailY[i];
+        tailX[i] = prevX;
+        tailY[i] = prevY;
+        prevX = prev2X;
+        prevY = prev2Y;
+    }
     switch(dir){
         case LEFT:
             x--;
@@ -88,10 +115,29 @@ void logic(){
     if(x > width || x < 0 || y > height || y < 0){
         gameover = true;
     }
+    // if(x >= width){ // if snake hits the wall then it will appear from opposite side
+    //     x = 0;
+    // }
+    // else if(x < 0){
+    //     x = width - 1;
+    // }
+    // if(y >= height){ // if snake hits the wall then it will appear from opposite side
+    //     y = 0;
+    // }
+    // else if(y < 0){
+    //     y = height - 1;
+    // }
+    for(int i = 0; i < nTail; i++){
+        if(tailX[i] == x && tailY[i] == y){
+            gameover = true;
+        }
+    }
+
     if(x == fruitX && y == fruitY){
         score += 10;
         fruitX = rand() % width;
         fruitY = rand() % height;
+        nTail++;
     }
 
 };
@@ -101,7 +147,7 @@ int main(){
         draw();
         input();
         logic();
-        // sleep(10); // sleep for 10 milliseconds // for windows use Sleep(10);
+        Sleep(100); // sleep for 10 milliseconds // for windows use Sleep(10);
     }
 
     return 0;
