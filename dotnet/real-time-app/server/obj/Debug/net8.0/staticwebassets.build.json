@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "midHWBHvABOyCJSBWlDfv5bpooeAZJ7GF9XctRXqt5E=",
+  "Source": "real-time-app",
+  "BasePath": "_content/real-time-app",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
